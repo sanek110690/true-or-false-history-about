@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17110A">
+    <title>About — True or False: History & Geography</title>
+    <style>
+        :root {
+            --background: #17110A;
+            --surface: #221A10;
+            --surface-secondary: #100B06;
+            --primary: #D9A441;
+            --primary-dark: #A5741F;
+            --primary-light: #F3D9A4;
+            --text-primary: #F3E7CE;
+            --text-secondary: #C8B48C;
+            --text-hint: #9A8560;
+            --border: #4A4136;
+            --gold: #F0C04A;
+            --green: #4E8C4A;
+            --red: #B4432F;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 32px 16px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         Roboto, Helvetica, Arial, sans-serif;
+            background:
+                radial-gradient(circle at 10% 0%, #2A1E12 0%, transparent 40%),
+                radial-gradient(circle at 90% 100%, #2A1E12 0%, transparent 40%),
+                var(--background);
+            color: var(--text-primary);
+            line-height: 1.65;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .language-switch {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .language-switch button {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .language-switch button.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #17110A;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid rgba(217, 164, 65, 0.13);
+            border-radius: 24px;
+            padding: 36px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+        }
+
+        .hero {
+            text-align: center;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 28px;
+        }
+
+        .app-icon {
+            width: 78px;
+            height: 78px;
+            border-radius: 22px;
+            background: linear-gradient(145deg, #D9A441, #8A5A12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 39px;
+            box-shadow: 0 8px 24px rgba(217, 164, 65, 0.2);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 29px;
+            line-height: 1.3;
+            font-weight: 800;
+            letter-spacing: -0.6px;
+        }
+
+        .subtitle {
+            margin: 10px 0 0;
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .edition {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(217, 164, 65, 0.14);
+            border: 1px solid rgba(217, 164, 65, 0.25);
+            color: var(--primary-light);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            margin: 30px 0 10px;
+            font-size: 19px;
+            line-height: 1.4;
+            font-weight: 750;
+            color: var(--primary-light);
+        }
+
+        p {
+            margin: 0 0 14px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .feature-list {
+            display: grid;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 15px;
+            background: #2A1E12;
+            border: 1px solid rgba(217, 164, 65, 0.1);
+            border-radius: 16px;
+        }
+
+        .feature-icon {
+            flex-shrink: 0;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(217, 164, 65, 0.15);
+            font-size: 22px;
+        }
+
+        .feature strong {
+            display: block;
+            color: var(--text-primary);
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .feature span {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .modes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 18px 0;
+        }
+
+        .mode {
+            padding: 14px;
+            border-radius: 14px;
+            background: #2A1E12;
+            border: 1px solid rgba(217, 164, 65, 0.1);
+        }
+
+        .mode strong {
+            display: block;
+            font-size: 14px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .mode span {
+            display: block;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .highlight {
+            margin-top: 24px;
+            padding: 18px 20px;
+            border-radius: 16px;
+            background: rgba(217, 164, 65, 0.1);
+            border: 1px solid rgba(217, 164, 65, 0.2);
+            border-left: 4px solid var(--primary);
+        }
+
+        .highlight p {
+            margin: 0;
+            color: var(--primary-light);
+            font-size: 14px;
+        }
+
+        .footer {
+            text-align: center;
+            padding-top: 26px;
+            margin-top: 28px;
+            border-top: 1px solid var(--border);
+            color: var(--text-hint);
+            font-size: 12px;
+        }
+
+        .footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        [data-lang] {
+            display: none;
+        }
+
+        [data-lang].visible {
+            display: block;
+        }
+
+        @media (max-width: 520px) {
+            body {
+                padding: 16px 10px;
+            }
+
+            .card {
+                padding: 24px 18px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            .modes {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="language-switch">
+        <button id="enBtn" class="active" onclick="setLanguage('en')">English</button>
+        <button id="ruBtn" onclick="setLanguage('ru')">Русский</button>
+    </div>
+
+    <main class="card">
+
+        <!-- ENGLISH -->
+        <div data-lang="en" class="visible">
+            <header class="hero">
+                <div class="app-icon">🏛️</div>
+                <h1>True or False</h1>
+                <p class="subtitle">Explore the past. Discover the world!</p>
+                <span class="edition">HISTORY & GEOGRAPHY EDITION</span>
+            </header>
+
+            <h2>About the Game</h2>
+            <p>
+                Welcome to <strong>True or False: History & Geography</strong> —
+                an educational quiz that takes you on a journey through
+                the history of humanity and around our planet!
+            </p>
+            <p>
+                Discover fascinating facts about ancient civilizations,
+                great historical events, countries, capitals, famous landmarks,
+                and the natural wonders of our world.
+            </p>
+
+            <h2>Discover History & Geography</h2>
+            <div class="feature-list">
+                <div class="feature">
+                    <div class="feature-icon">🏛️</div>
+                    <div>
+                        <strong>Ancient Civilizations</strong>
+                        <span>Explore the worlds of Ancient Egypt, Greece,
+                        Rome, and other remarkable civilizations.</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">📜</div>
+                    <div>
+                        <strong>Historical Events</strong>
+                        <span>Test your knowledge of important events,
+                        famous personalities, discoveries, and turning points
+                        in human history.</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <div>
+                        <strong>Countries & Capitals</strong>
+                        <span>Discover countries, capitals, borders,
+                        continents, oceans, and fascinating places around the globe.</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🗿</div>
+                    <div>
+                        <strong>Landmarks & Wonders</strong>
+                        <span>Learn about famous monuments, architectural masterpieces,
+                        and natural wonders.</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🧠</div>
+                    <div>
+                        <strong>Learn Something New</strong>
+                        <span>Every answer comes with a short explanation
+                        to help you understand the facts and remember
+                        interesting details.</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Choose Your Game Mode</h2>
+            <p>
+                There are different ways to challenge yourself.
+                Choose your favorite mode and put your knowledge to the test!
+            </p>
+
+            <div class="modes">
+                <div class="mode">
+                    <strong>Classic</strong>
+                    <span>Answer a series of questions and see how many
+                    facts you know.</span>
+                </div>
+
+                <div class="mode">
+                    <strong>Time Challenge</strong>
+                    <span>Make quick decisions before the clock runs out.</span>
+                </div>
+
+                <div class="mode">
+                    <strong>Journey</strong>
+                    <span>Progress through questions and discover
+                    new challenges along the way.</span>
+                </div>
+
+                <div class="mode">
+                    <strong>Perfect</strong>
+                    <span>One mistake ends the game. Can you get
+                    every answer right?</span>
+                </div>
+
+                <div class="mode">
+                    <strong>Survival</strong>
+                    <span>You have limited lives. How long can you
+                    keep your winning streak alive?</span>
+                </div>
+            </div>
+
+            <h2>Challenge Your Knowledge</h2>
+            <p>
+                Whether you love history, enjoy geography, or simply
+                want to learn something new, this quiz offers an entertaining
+                way to test your knowledge and discover surprising facts.
+            </p>
+
+            <h2>Play Anytime, Anywhere</h2>
+            <p>
+                Enjoy quick quiz sessions whenever you have a free moment.
+                Challenge yourself, improve your knowledge, and explore
+                the stories and places that shaped our world.
+            </p>
+
+            <div class="highlight">
+                <p>
+                    <strong>True or False?</strong> Think you know the past
+                    and the world around you? Take the challenge and find out!
+                </p>
+            </div>
+        </div>
+
+        <!-- RUSSIAN -->
+        <div data-lang="ru">
+            <header class="hero">
+                <div class="app-icon">🏛️</div>
+                <h1>Правда или Ложь</h1>
+                <p class="subtitle">Изучай прошлое. Открывай мир!</p>
+                <span class="edition">ИСТОРИЯ И ГЕОГРАФИЯ</span>
+            </header>
+
+            <h2>Об игре</h2>
+            <p>
+                Добро пожаловать в <strong>«Правда или ложь: История и география»</strong> —
+                познавательную викторину, которая отправит тебя
+                в путешествие по истории человечества и нашей планете!
+            </p>
+            <p>
+                Узнавай удивительные факты о древних цивилизациях,
+                великих исторических событиях, странах, столицах,
+                знаменитых достопримечательностях и природных чудесах мира.
+            </p>
+
+            <h2>Открой для себя историю и географию</h2>
+            <div class="feature-list">
+                <div class="feature">
+                    <div class="feature-icon">🏛️</div>
+                    <div>
+                        <strong>Древние цивилизации</strong>
+                        <span>Исследуй миры Древнего Египта, Греции,
+                        Рима и других удивительных цивилизаций.</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">📜</div>
+                    <div>
+                        <strong>Исторические события</strong>
+                        <span>Проверь свои знания о важных событиях,
+                        знаменитых личностях, открытиях и поворотных
+                        моментах в истории человечества.</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🌍</div>
+                    <div>
+                        <strong>Страны и столицы</strong>
+                        <span>Открывай для себя страны, столицы, границы,
+                        континенты, океаны и удивительные места нашей планеты.</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🗿</div>
+                    <div>
+                        <strong>Достопримечательности и чудеса света</strong>
+                        <span>Узнавай о знаменитых памятниках, архитектурных
+                        шедеврах и природных чудесах.</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🧠</div>
+                    <div>
+                        <strong>Узнавай новое</strong>
+                        <span>Каждый ответ сопровождается коротким объяснением,
+                        которое поможет разобраться в фактах и запомнить
+                        интересные подробности.</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Выбирай игровой режим</h2>
+            <p>
+                Есть разные способы проверить свои знания.
+                Выбирай любимый режим и принимай вызов!
+            </p>
+
+            <div class="modes">
+                <div class="mode">
+                    <strong>Классика</strong>
+                    <span>Ответь на серию вопросов и узнай,
+                    сколько фактов тебе известно.</span>
+                </div>
+
+                <div class="mode">
+                    <strong>На время</strong>
+                    <span>Принимай решения быстро, пока не закончилось время.</span>
+                </div>
+
+                <div class="mode">
+                    <strong>Путешествие</strong>
+                    <span>Продвигайся по вопросам и открывай
+                    для себя новые испытания.</span>
+                </div>
+
+                <div class="mode">
+                    <strong>Идеал</strong>
+                    <span>Одна ошибка — и игра окончена.
+                    Сможешь ответить правильно на всё?</span>
+                </div>
+
+                <div class="mode">
+                    <strong>Выживание</strong>
+                    <span>У тебя ограниченное количество жизней.
+                    Как долго продержится твоя серия правильных ответов?</span>
+                </div>
+            </div>
+
+            <h2>Проверь свои знания</h2>
+            <p>
+                Любишь историю, интересуешься географией или просто
+                хочешь узнать что-то новое? Эта викторина поможет
+                проверить свои знания и открыть для себя неожиданные факты.
+            </p>
+
+            <h2>Играй в любое время и в любом месте</h2>
+            <p>
+                Устраивай короткие игровые сессии в свободное время.
+                Проверяй себя, расширяй кругозор и открывай истории
+                и места, которые сформировали наш мир.
+            </p>
+
+            <div class="highlight">
+                <p>
+                    <strong>Правда или ложь?</strong> Думаешь, что хорошо
+                    знаешь историю и окружающий мир? Прими вызов и проверь себя!
+                </p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div data-lang="en" class="visible">
+                <p>Made with ❤️ by ABVSoft</p>
+                <p>
+                    Questions or feedback?
+                    <a href="mailto:abvsoft.apps@gmail.com">Contact us</a>
+                </p>
+                <p>© 2026 ABVSoft. All rights reserved.</p>
+            </div>
+
+            <div data-lang="ru">
+                <p>Сделано с ❤️ командой ABVSoft</p>
+                <p>
+                    Есть вопросы или предложения?
+                    <a href="mailto:abvsoft.apps@gmail.com">Свяжитесь с нами</a>
+                </p>
+                <p>© 2026 ABVSoft. Все права защищены.</p>
+            </div>
+        </footer>
+
+    </main>
+</div>
+
+<script>
+    function setLanguage(lang) {
+        document.documentElement.lang = lang;
+
+        document.querySelectorAll('[data-lang]').forEach(element => {
+            element.classList.toggle('visible', element.dataset.lang === lang);
+        });
+
+        document.getElementById('enBtn').classList.toggle('active', lang === 'en');
+        document.getElementById('ruBtn').classList.toggle('active', lang === 'ru');
+
+        try {
+            localStorage.setItem('historyGeographyAboutLanguage', lang);
+        } catch (e) {
+            // Language switching still works if local storage is unavailable.
+        }
+    }
+
+    (function () {
+        let lang = 'en';
+
+        try {
+            const saved = localStorage.getItem('historyGeographyAboutLanguage');
+
+            if (saved === 'en' || saved === 'ru') {
+                lang = saved;
+            } else if (navigator.language.toLowerCase().startsWith('ru')) {
+                lang = 'ru';
+            }
+        } catch (e) {
+            if (navigator.language.toLowerCase().startsWith('ru')) {
+                lang = 'ru';
+            }
+        }
+
+        setLanguage(lang);
+    })();
+</script>
+</body>
+</html>
